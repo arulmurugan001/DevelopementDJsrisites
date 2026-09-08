@@ -1,0 +1,193 @@
+/* =========================================================
+   GLOBAL-FIXES.CSS
+   Link this AFTER styles.css in your <head> so these rules
+   override the broken ones. Once verified working, you can
+   merge these directly into styles.css and delete this file.
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. FIX: Proper universal reset (replaces the broken
+      "margin-left: 0%; padding: auto;" rule)
+--------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+
+/* ---------------------------------------------------------
+   2. FIX: Remove leftover React artifact
+      (#root does not exist in this plain HTML site)
+--------------------------------------------------------- */
+/* Simply do not include the old #root rule anymore. */
+
+
+/* ---------------------------------------------------------
+   3. FIX: Invisible button text
+      (was rgb(202,16,16) dark red on a red button)
+--------------------------------------------------------- */
+.btn-primary {
+    color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   4. FIX: Invalid color() function on section text
+--------------------------------------------------------- */
+.section-text {
+    color: var(--text-secondary);
+}
+
+
+/* ---------------------------------------------------------
+   5. FIX: Missing semicolon broke color + font-size
+--------------------------------------------------------- */
+.service-card p {
+    color: white;
+    font-size: 16px;
+}
+
+
+/* ---------------------------------------------------------
+   6. CONSISTENT SECTION SPACING
+      Every top-level section now uses the exact same
+      vertical rhythm, so gaps look identical site-wide.
+--------------------------------------------------------- */
+.section,
+.hero,
+.why-us,
+.cta-section,
+.reviews-section {
+    padding-block: 100px;
+}
+
+@media (max-width: 768px) {
+    .section,
+    .why-us,
+    .cta-section,
+    .reviews-section {
+        padding-block: 60px;
+    }
+}
+
+/* Hero keeps its own min-height rule, just align padding-top
+   with the fixed header height already set in your CSS */
+.hero {
+    padding-top: 82px;
+    padding-bottom: 100px;
+}
+
+
+/* ---------------------------------------------------------
+   7. BACKGROUND IMAGES
+      Real photos layered UNDER your existing gradients,
+      so text stays readable (gradient acts as a dark
+      overlay on top of the photo).
+
+      Replace the file paths with your actual images in
+      /images/. Any section left as gradient-only is fine
+      to keep — only add an image where you have one.
+--------------------------------------------------------- */
+
+.hero-background {
+    background:
+        radial-gradient(
+            circle at 78% 50%,
+            rgba(214, 221, 211, 0.55),
+            transparent 32%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(230, 5, 5, 0.75) 10%,
+            rgba(221, 213, 215, 0.55) 90%
+        ),
+        url("images/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-section {
+    background:
+        radial-gradient(
+            circle at 78% 50%,
+            rgba(29, 31, 29, 0.85),
+            transparent 32%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(2, 8, 14, 0.9) 10%,
+            rgba(224, 70, 70, 0.75) 90%
+        ),
+        url("images/about-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* subtle parallax on desktop */
+    background-repeat: no-repeat;
+}
+
+.services-section {
+    background:
+        radial-gradient(
+            circle at 78% 50%,
+            rgba(29, 31, 29, 0.85),
+            transparent 32%
+        ),
+        linear-gradient(
+            125deg,
+            rgba(219, 25, 12, 0.85) 10%,
+            rgba(189, 192, 207, 0.75) 90%
+        ),
+        url("images/services-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cta-section {
+    background:
+        radial-gradient(
+            circle at 78% 50%,
+            rgba(17, 17, 17, 0.85),
+            transparent 70%
+        ),
+        linear-gradient(
+            125deg,
+            rgba(219, 25, 12, 0.85) 10%,
+            rgba(236, 238, 243, 0.6) 90%
+        ),
+        url("images/cta-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Disable background-attachment: fixed on mobile —
+   it causes jank/performance issues on touch devices */
+@media (max-width: 768px) {
+    .about-section,
+    .cta-section {
+        background-attachment: scroll;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   8. CLEANUP: duplicate keyframes
+      Keep only ONE definition of this animation.
+      Delete the second "@keyframes musicMarqueeRightToLeft"
+      block wherever it appears a second time in styles.css
+      (it's currently defined once under Music and again
+      under Video — one copy is enough, they share the name).
+--------------------------------------------------------- */

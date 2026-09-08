@@ -1,0 +1,3240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="DJ Sri - Professional DJ for weddings, parties, clubs, corporate events and unforgettable celebrations."
+    >
+
+    <meta
+        name="keywords"
+        content="DJ, professional DJ, wedding DJ, party DJ, club DJ, corporate DJ, event DJ, DJ Chennai"
+    >
+
+    <meta
+        name="author"
+        content="DJ Sri"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08090d"
+    >
+
+    <title>DJ Sri | Professional DJ & Music Experience</title>
+
+
+    <!-- =========================
+         Google Fonts
+    ========================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================
+         Font Awesome
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =========================
+         Main CSS
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+</head>
+
+<script>
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const formMessage =
+    document.getElementById("formMessage");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const buttonText =
+    document.getElementById("buttonText");
+
+const buttonIcon =
+    document.getElementById("buttonIcon");
+
+
+contactForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        /* =========================================
+           Loading state
+        ========================================== */
+
+        submitButton.disabled = true;
+
+        buttonText.textContent = "Sending...";
+
+        buttonIcon.className =
+            "fa-solid fa-spinner fa-spin";
+
+
+        formMessage.textContent = "";
+
+        formMessage.className =
+            "form-message";
+
+
+        /* =========================================
+           Form data
+        ========================================== */
+
+        const formData =
+            new FormData(contactForm);
+
+
+        try {
+
+            const response =
+                await fetch(
+                    contactForm.action,
+                    {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            "Accept":
+                                "application/json"
+                        }
+                    }
+                );
+
+
+            /* =====================================
+               SUCCESS
+            ====================================== */
+
+            if (response.ok) {
+
+                formMessage.textContent =
+                    "Thank you! Your enquiry has been sent successfully.";
+
+                formMessage.classList.add(
+                    "success"
+                );
+
+
+                /* Reset form */
+
+                contactForm.reset();
+
+
+                /* Button */
+
+                buttonText.textContent =
+                    "Enquiry Sent";
+
+                buttonIcon.className =
+                    "fa-solid fa-check";
+
+
+                /* Return button after 3 seconds */
+
+                setTimeout(function () {
+
+                    submitButton.disabled =
+                        false;
+
+                    buttonText.textContent =
+                        "Send Enquiry";
+
+                    buttonIcon.className =
+                        "fa-solid fa-paper-plane";
+
+                }, 3000);
+
+
+            }
+
+            /* =====================================
+               ERROR
+            ====================================== */
+
+            else {
+
+                formMessage.textContent =
+                    "Unable to send your enquiry. Please try again.";
+
+                formMessage.classList.add(
+                    "error"
+                );
+
+
+                submitButton.disabled =
+                    false;
+
+                buttonText.textContent =
+                    "Send Enquiry";
+
+                buttonIcon.className =
+                    "fa-solid fa-paper-plane";
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Form submission error:",
+                error
+            );
+
+
+            formMessage.textContent =
+                "Something went wrong. Please check your internet connection and try again.";
+
+            formMessage.classList.add(
+                "error"
+            );
+
+
+            submitButton.disabled =
+                false;
+
+            buttonText.textContent =
+                "Send Enquiry";
+
+            buttonIcon.className =
+                "fa-solid fa-paper-plane";
+
+        }
+
+    });
+
+</script>
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            <!-- Logo -->
+
+            <a
+                href="#home"
+                class="logo"
+                aria-label="DJ Sri home"
+            >
+
+                <span class="logo-icon">
+                    <i
+                        class="fa-solid fa-headphones"
+                        aria-hidden="true"
+                    ></i>
+                </span>
+
+                <span>
+                    DJ<span>SRI</span>
+                </span>
+
+            </a>
+
+
+            <!-- Navigation -->
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#music">Music</a>
+                </li>
+
+                <li>
+                    <a href="#videos">Videos</a>
+                </li>
+
+                <li>
+                    <a href="#gallery">Gallery</a>
+                </li>
+
+                <li>
+                    <a href="#services">Services</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+
+            <!-- Desktop CTA -->
+
+            <a
+                href="#contact"
+                class="nav-button"
+            >
+                Book Me
+            </a>
+
+
+            <!-- Mobile Menu -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+
+                <i
+                    class="fa-solid fa-bars"
+                    aria-hidden="true"
+                ></i>
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section
+            id="home"
+            class="hero"
+        >
+
+            <div
+                class="hero-background"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="hero-container container">
+
+                <!-- Hero Content -->
+
+                <div class="hero-content">
+
+                    <div class="hero-tag">
+
+                        <span
+                            class="live-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                        AVAILABLE FOR EVENTS
+
+                    </div>
+
+
+                    <p class="hero-subtitle">
+                        PROFESSIONAL DJ & MUSIC PRODUCER
+                    </p>
+
+
+                    <h1>
+                        FEEL THE
+                        <span>BEAT.</span>
+                    </h1>
+
+
+                    <p class="hero-description">
+                        Turning every event into an unforgettable
+                        experience through music, energy and
+                        unforgettable moments.
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#music"
+                            class="btn btn-primary"
+                        >
+                            <i
+                                class="fa-solid fa-play"
+                                aria-hidden="true"
+                            ></i>
+
+                            Listen Now
+                        </a>
+
+
+                        <a
+                            href="#contact"
+                            class="btn btn-outline"
+                        >
+                            Book My Event
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </div>
+
+
+                    <!-- Statistics -->
+
+                    <div class="hero-stats">
+
+                        <div class="stat">
+                            <strong>10+</strong>
+                            <span>Years Experience</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>500+</strong>
+                            <span>Events</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>50K+</strong>
+                            <span>Happy Guests</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Hero Visual -->
+
+                <div class="hero-visual">
+
+                    <div
+                        class="hero-glow"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div
+                        class="hero-ring ring-one"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div
+                        class="hero-ring ring-two"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <div class="hero-image">
+
+                        <img
+                            src="images/dj-hero.jpg"
+                            alt="DJ Sri performing live"
+                        >
+
+                    </div>
+
+
+                    <!-- Now Playing -->
+
+                    <div class="floating-card music-floating">
+
+                        <div
+                            class="equalizer"
+                            aria-hidden="true"
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div>
+
+                            <small>NOW PLAYING</small>
+
+                            <strong>
+                                Midnight Energy
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Vinyl -->
+
+                    <div
+                        class="vinyl-disc"
+                        aria-hidden="true"
+                    >
+
+                        <i class="fa-solid fa-music"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Scroll -->
+
+            <a
+                href="#about"
+                class="scroll-down"
+                aria-label="Scroll to About section"
+            >
+
+                <span>SCROLL</span>
+
+                <i
+                    class="fa-solid fa-arrow-down"
+                    aria-hidden="true"
+                ></i>
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <section
+            id="about"
+            class="section about-section"
+        >
+
+            <div class="container about-grid">
+
+
+                <!-- Image -->
+
+                <div class="about-image-wrapper">
+
+                    <span
+                        class="image-number"
+                        aria-hidden="true"
+                    >
+                        01
+                    </span>
+
+
+                    <div class="about-image">
+
+                        <img
+                            src="images/dj-profile.jpg"
+                            alt="DJ Sri performing at an event"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="experience-badge">
+
+                        <strong>10+</strong>
+
+                        <span>
+                            YEARS<br>
+                            EXPERIENCE
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Content -->
+
+                <div class="about-content">
+
+                    <p class="section-label">
+                        ABOUT ME
+                    </p>
+
+                    <h2>
+                        Music Is More Than
+                        <span>A Sound.</span>
+                    </h2>
+
+
+                    <p class="section-text">
+                        I'm DJ Sri, a professional DJ passionate
+                        about creating unforgettable experiences.
+                        From intimate celebrations to high-energy
+                        club nights, every performance is designed
+                        around the crowd.
+                    </p>
+
+
+                    <p class="section-text">
+                        My goal is simple — read the room,
+                        understand the energy and create the
+                        perfect soundtrack for every moment.
+                    </p>
+
+
+                    <div class="about-features">
+
+                        <div>
+                            <i
+                                class="fa-solid fa-music"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>Live Mixing</span>
+                        </div>
+
+                        <div>
+                            <i
+                                class="fa-solid fa-volume-high"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>Premium Sound</span>
+                        </div>
+
+                        <div>
+                            <i
+                                class="fa-solid fa-bolt"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>High Energy</span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#contact"
+                        class="text-link"
+                    >
+                        Let's Work Together
+
+                        <i
+                            class="fa-solid fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MUSIC
+        ================================================== -->
+
+        <section
+            id="music"
+            class="section music-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            MY MUSIC
+                        </p>
+
+                        <h2>
+                            Latest <span>Tracks</span>
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Music Marquee -->
+
+                <div
+                    class="music-marquee"
+                    aria-label="Latest DJ tracks"
+                >
+
+                    <div class="music-track">
+
+
+                        <!-- Original Track Group -->
+
+                        <div class="music-group">
+
+
+                            <!-- Track 1 -->
+
+                            <article class="track-card">
+
+                                <div class="track-image">
+
+                                    <img
+                                        src="images/music-1.jpg"
+                                        alt="Midnight Energy"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="play-button"
+                                        aria-label="Play Midnight Energy"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="track-number">
+                                        01
+                                    </span>
+
+                                </div>
+
+
+                                <div class="track-content">
+
+                                    <div>
+                                        <h3>
+                                            Midnight Energy
+                                        </h3>
+
+                                        <p>
+                                            Deep House • 2026
+                                        </p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        04:32
+                                    </span>
+
+                                </div>
+
+
+                                <audio controls preload="none">
+                                    <source
+                                        src="audio/track-1.mp3"
+                                        type="audio/mpeg"
+                                    >
+
+                                    Your browser does not support
+                                    the audio element.
+                                </audio>
+
+                            </article>
+
+
+                            <!-- Track 2 -->
+
+                            <article class="track-card">
+
+                                <div class="track-image">
+
+                                    <img
+                                        src="images/music-2.jpg"
+                                        alt="Summer Vibes"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="play-button"
+                                        aria-label="Play Summer Vibes"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="track-number">
+                                        02
+                                    </span>
+
+                                </div>
+
+
+                                <div class="track-content">
+
+                                    <div>
+                                        <h3>
+                                            Summer Vibes
+                                        </h3>
+
+                                        <p>
+                                            House • 2026
+                                        </p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        03:58
+                                    </span>
+
+                                </div>
+
+
+                                <audio controls preload="none">
+                                    <source
+                                        src="audio/track-2.mp3"
+                                        type="audio/mpeg"
+                                    >
+                                </audio>
+
+                            </article>
+
+
+                            <!-- Track 3 -->
+
+                            <article class="track-card">
+
+                                <div class="track-image">
+
+                                    <img
+                                        src="images/music-3.jpg"
+                                        alt="Neon Nights"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="play-button"
+                                        aria-label="Play Neon Nights"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="track-number">
+                                        03
+                                    </span>
+
+                                </div>
+
+
+                                <div class="track-content">
+
+                                    <div>
+                                        <h3>
+                                            Neon Nights
+                                        </h3>
+
+                                        <p>
+                                            EDM • 2026
+                                        </p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        05:12
+                                    </span>
+
+                                </div>
+
+
+                                <audio controls preload="none">
+                                    <source
+                                        src="audio/track-3.mp3"
+                                        type="audio/mpeg"
+                                    >
+                                </audio>
+
+                            </article>
+
+
+                            <!-- Track 4 -->
+
+                            <article class="track-card">
+
+                                <div class="track-image">
+
+                                    <img
+                                        src="images/music-4.jpg"
+                                        alt="Festival Fire"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="play-button"
+                                        aria-label="Play Festival Fire"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="track-number">
+                                        04
+                                    </span>
+
+                                </div>
+
+
+                                <div class="track-content">
+
+                                    <div>
+                                        <h3>
+                                            Festival Fire
+                                        </h3>
+
+                                        <p>
+                                            EDM • Festival
+                                        </p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        04:45
+                                    </span>
+
+                                </div>
+
+
+                                <audio controls preload="none">
+                                    <source
+                                        src="audio/track-4.mp3"
+                                        type="audio/mpeg"
+                                    >
+                                </audio>
+
+                            </article>
+
+                        </div>
+
+
+                        <!-- Duplicate Group
+                             Required for seamless marquee -->
+
+                        <div
+                            class="music-group"
+                            aria-hidden="true"
+                        >
+
+                            <article class="track-card">
+                                <div class="track-image">
+                                    <img
+                                        src="images/music-1.jpg"
+                                        alt=""
+                                    >
+
+                                    <span class="track-number">
+                                        01
+                                    </span>
+                                </div>
+
+                                <div class="track-content">
+                                    <div>
+                                        <h3>Midnight Energy</h3>
+                                        <p>Deep House • 2026</p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        04:32
+                                    </span>
+                                </div>
+                            </article>
+
+
+                            <article class="track-card">
+                                <div class="track-image">
+                                    <img
+                                        src="images/music-2.jpg"
+                                        alt=""
+                                    >
+
+                                    <span class="track-number">
+                                        02
+                                    </span>
+                                </div>
+
+                                <div class="track-content">
+                                    <div>
+                                        <h3>Summer Vibes</h3>
+                                        <p>House • 2026</p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        03:58
+                                    </span>
+                                </div>
+                            </article>
+
+
+                            <article class="track-card">
+                                <div class="track-image">
+                                    <img
+                                        src="images/music-3.jpg"
+                                        alt=""
+                                    >
+
+                                    <span class="track-number">
+                                        03
+                                    </span>
+                                </div>
+
+                                <div class="track-content">
+                                    <div>
+                                        <h3>Neon Nights</h3>
+                                        <p>EDM • 2026</p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        05:12
+                                    </span>
+                                </div>
+                            </article>
+
+
+                            <article class="track-card">
+                                <div class="track-image">
+                                    <img
+                                        src="images/music-4.jpg"
+                                        alt=""
+                                    >
+
+                                    <span class="track-number">
+                                        04
+                                    </span>
+                                </div>
+
+                                <div class="track-content">
+                                    <div>
+                                        <h3>Festival Fire</h3>
+                                        <p>EDM • Festival</p>
+                                    </div>
+
+                                    <span class="track-duration">
+                                        04:45
+                                    </span>
+                                </div>
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             VIDEOS
+        ================================================== -->
+
+        <section
+            id="videos"
+            class="section video-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            FEEL THE EXPERIENCE
+                        </p>
+
+                        <h2>
+                            Watch Me <span>Live</span>
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Video Marquee -->
+
+                <div
+                    class="video-marquee"
+                    aria-label="DJ performance videos"
+                >
+
+                    <div class="video-track">
+
+
+                        <!-- Video Group -->
+
+                        <div class="video-group">
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-1.jpg"
+                                        alt="DJ performing at Chennai Night Festival"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="video-play"
+                                        aria-label="Play Chennai Night Festival video"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="video-duration">
+                                        03:42
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        LIVE PERFORMANCE
+                                    </span>
+
+                                    <h3>
+                                        Chennai Night Festival
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-2.jpg"
+                                        alt="DJ performing at an electronic music festival"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="video-play"
+                                        aria-label="Play Electronic Music Night video"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="video-duration">
+                                        05:18
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        FESTIVAL
+                                    </span>
+
+                                    <h3>
+                                        Electronic Music Night
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-3.jpg"
+                                        alt="DJ performing at a neon music event"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="video-play"
+                                        aria-label="Play Neon Nights video"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="video-duration">
+                                        04:25
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        DJ PERFORMANCE
+                                    </span>
+
+                                    <h3>
+                                        Neon Nights
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-4.jpg"
+                                        alt="DJ performing at a festival"
+                                        loading="lazy"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="video-play"
+                                        aria-label="Play Festival Fire video"
+                                    >
+                                        <i
+                                            class="fa-solid fa-play"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
+
+                                    <span class="video-duration">
+                                        06:10
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        LIVE EVENT
+                                    </span>
+
+                                    <h3>
+                                        Festival Fire
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+
+                        <!-- Duplicate Group -->
+
+                        <div
+                            class="video-group"
+                            aria-hidden="true"
+                        >
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-1.jpg"
+                                        alt=""
+                                        loading="lazy"
+                                    >
+
+                                    <span class="video-duration">
+                                        03:42
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        LIVE PERFORMANCE
+                                    </span>
+
+                                    <h3>
+                                        Chennai Night Festival
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-2.jpg"
+                                        alt=""
+                                        loading="lazy"
+                                    >
+
+                                    <span class="video-duration">
+                                        05:18
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        FESTIVAL
+                                    </span>
+
+                                    <h3>
+                                        Electronic Music Night
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-3.jpg"
+                                        alt=""
+                                        loading="lazy"
+                                    >
+
+                                    <span class="video-duration">
+                                        04:25
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        DJ PERFORMANCE
+                                    </span>
+
+                                    <h3>
+                                        Neon Nights
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="video-card">
+
+                                <div class="video-thumbnail">
+
+                                    <img
+                                        src="images/video-4.jpg"
+                                        alt=""
+                                        loading="lazy"
+                                    >
+
+                                    <span class="video-duration">
+                                        06:10
+                                    </span>
+
+                                </div>
+
+                                <div class="video-content">
+
+                                    <span class="video-category">
+                                        LIVE EVENT
+                                    </span>
+
+                                    <h3>
+                                        Festival Fire
+                                    </h3>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="video-action">
+
+                    <a
+                        href="#contact"
+                        class="btn btn-primary"
+                    >
+                        Explore More
+
+                        <i
+                            class="fa-solid fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GALLERY
+        ================================================== -->
+
+        <section
+            id="gallery"
+            class="section gallery-section"
+        >
+
+            <div class="container">
+
+                <div class="gallery-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            GALLERY
+                        </p>
+
+                        <h2>
+                            Moments Behind
+                            <span>The Music</span>
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gallery-grid">
+
+
+                    <article class="gallery-item gallery-item-large">
+
+                        <img
+                            src="images/dj-1.jpg"
+                            alt="DJ performing at a live music event"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-info">
+
+                                <span>
+                                    LIVE PERFORMANCE
+                                </span>
+
+                                <h3>
+                                    Night Energy
+                                </h3>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="gallery-view"
+                                aria-label="View Night Energy image"
+                            >
+                                <i
+                                    class="fa-solid fa-expand"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="gallery-item">
+
+                        <img
+                            src="images/dj-2.jpg"
+                            alt="DJ hands controlling a music mixer"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-info">
+
+                                <span>
+                                    DJ SETUP
+                                </span>
+
+                                <h3>
+                                    Behind The Decks
+                                </h3>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="gallery-view"
+                                aria-label="View Behind The Decks image"
+                            >
+                                <i
+                                    class="fa-solid fa-expand"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="gallery-item">
+
+                        <img
+                            src="images/dj-3.jpg"
+                            alt="DJ performing for a large audience"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-info">
+
+                                <span>
+                                    LIVE CROWD
+                                </span>
+
+                                <h3>
+                                    Crowd Energy
+                                </h3>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="gallery-view"
+                                aria-label="View Crowd Energy image"
+                            >
+                                <i
+                                    class="fa-solid fa-expand"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="gallery-item">
+
+                        <img
+                            src="images/dj-4.jpg"
+                            alt="DJ performing with stage lights"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-info">
+
+                                <span>
+                                    FESTIVAL
+                                </span>
+
+                                <h3>
+                                    Neon Festival
+                                </h3>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="gallery-view"
+                                aria-label="View Neon Festival image"
+                            >
+                                <i
+                                    class="fa-solid fa-expand"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="gallery-item gallery-item-wide">
+
+                        <img
+                            src="images/dj-5.jpg"
+                            alt="DJ mixing music in front of a crowd"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-info">
+
+                                <span>
+                                    FESTIVAL NIGHT
+                                </span>
+
+                                <h3>
+                                    Festival Fire
+                                </h3>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="gallery-view"
+                                aria-label="View Festival Fire image"
+                            >
+                                <i
+                                    class="fa-solid fa-expand"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="gallery-action">
+
+                    <a
+                        href="#contact"
+                        class="btn btn-primary"
+                    >
+                        Explore More
+
+                        <i
+                            class="fa-solid fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SERVICES
+        ================================================== -->
+
+        <section
+            id="services"
+            class="section services-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            WHAT I DO
+                        </p>
+
+                        <h2>
+                            My <span>Services</span>
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <!-- 01 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-ring"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>01</span>
+
+                        <h3>
+                            Wedding DJ
+                        </h3>
+
+                        <p>
+                            Create the perfect soundtrack for
+                            your special day with customized
+                            music, professional sound and
+                            high-energy entertainment.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 02 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-champagne-glasses"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>02</span>
+
+                        <h3>
+                            Private Parties
+                        </h3>
+
+                        <p>
+                            Bring your celebration to life with
+                            high-energy music, customized playlists
+                            and a personalized DJ experience.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 03 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-compact-disc"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>03</span>
+
+                        <h3>
+                            Club Events
+                        </h3>
+
+                        <p>
+                            Powerful mixes, seamless transitions
+                            and nonstop energy designed for
+                            unforgettable club nights.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 04 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-graduation-cap"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>04</span>
+
+                        <h3>
+                            College Culturals & Farewell
+                        </h3>
+
+                        <p>
+                            High-energy music, live mixing and
+                            professional entertainment for
+                            college cultural events and farewells.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 05 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-building"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>05</span>
+
+                        <h3>
+                            Corporate Events
+                        </h3>
+
+                        <p>
+                            Professional entertainment solutions
+                            for corporate parties, product launches,
+                            annual celebrations and special events.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+
+                        </a>
+
+                    </article>
+
+
+                    <!-- 06 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-martini-glass-citrus"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>06</span>
+
+                        <h3>
+                            Pubbing
+                        </h3>
+
+                        <p>
+                            High-energy DJ sets, live mixing and
+                            crowd-focused music for pubs and
+                            nightlife venues.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 07 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-person-dress"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>07</span>
+
+                        <h3>
+                            Fashion Show Events
+                        </h3>
+
+                        <p>
+                            Carefully timed music, transitions and
+                            energetic sound designed to complement
+                            fashion shows and runway events.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 08 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            <i
+                                class="fa-solid fa-trophy"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <span>08</span>
+
+                        <h3>
+                            Sporting Events
+                        </h3>
+
+                        <p>
+                            Energetic music, announcements and
+                            entertainment to keep audiences engaged
+                            throughout sporting events.
+                        </p>
+
+                        <a href="#contact">
+                            Explore Service
+
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </article>
+
+                </div>
+
+
+                <div class="section-action">
+
+                    <a
+                        href="#contact"
+                        class="btn btn-primary"
+                    >
+                        Get In Touch
+
+                        <i
+                            class="fa-solid fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             WHY CHOOSE US
+        ================================================== -->
+
+        <section class="section why-us">
+
+            <div class="container why-grid">
+
+
+                <!-- Content -->
+
+                <div class="why-content">
+
+                    <p class="section-label">
+                        WHY CLIENTS CHOOSE US
+                    </p>
+
+                    <h2>
+                        Studio-Grade Sound.
+                        Live-Ready Every Time.
+                    </h2>
+
+                    <p>
+                        We adapt to the mindset and energy of every
+                        crowd. Our focus is live mixing, real-time
+                        song selection and creating the right
+                        atmosphere for the people on the dance floor.
+                    </p>
+
+                    <a
+                        href="#contact"
+                        class="btn btn-primary"
+                    >
+                        Contact Us
+
+                        <i
+                            class="fa-solid fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Feature Cards -->
+
+                <div class="why-cards">
+
+
+                    <article class="why-card">
+
+                        <i
+                            class="fa-solid fa-clock"
+                            aria-hidden="true"
+                        ></i>
+
+                        <h3>
+                            Time Management
+                        </h3>
+
+                        <p>
+                            Our team arrives on time and prepares
+                            the complete setup well before the event
+                            begins.
+                        </p>
+
+                    </article>
+
+
+                    <article class="why-card">
+
+                        <i
+                            class="fa-solid fa-star"
+                            aria-hidden="true"
+                        ></i>
+
+                        <h3>
+                            5D Dance Floor
+                        </h3>
+
+                        <p>
+                            We introduced a 5D mirror dance floor
+                            experience in our region for premium
+                            wedding and event setups.
+                        </p>
+
+                    </article>
+
+
+                    <article class="why-card">
+
+                        <i
+                            class="fa-solid fa-truck"
+                            aria-hidden="true"
+                        ></i>
+
+                        <h3>
+                            Transportation
+                        </h3>
+
+                        <p>
+                            We are ready to travel across Tamil Nadu
+                            with our own DJ and event equipment setup.
+                        </p>
+
+                    </article>
+
+
+                    <article class="why-card">
+
+                        <i
+                            class="fa-solid fa-shield-halved"
+                            aria-hidden="true"
+                        ></i>
+
+                        <h3>
+                            Complete DJ Setup
+                        </h3>
+
+                        <p>
+                            Professional sound systems, lighting,
+                            lasers and Sharpy lights are available
+                            with our own equipment.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="cta-section">
+
+            <div class="container cta-content">
+
+                <p class="section-label">
+                    READY TO PARTY?
+                </p>
+
+                <h2>
+                    Let's Make Some
+                    <span>Noise.</span>
+                </h2>
+
+                <p>
+                    Tell me about your event and let's create
+                    something unforgettable together.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="btn btn-primary"
+                >
+                    Book Your Event
+
+                    <i
+                        class="fa-solid fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             REVIEWS
+        ================================================== -->
+
+        <section class="reviews-section">
+
+            <div
+                class="glow glow-one"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="glow glow-two"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Header -->
+
+            <div class="reviews-header">
+
+                <div class="header-text">
+
+                    <span class="small-title">
+                        WHAT OUR CLIENTS SAY
+                    </span>
+
+                    <h2>
+                        OUR GOOGLE
+                        <span>REVIEWS</span>
+                    </h2>
+
+                    <p>
+                        Real experiences from our amazing customers
+                    </p>
+
+                </div>
+
+
+                <div class="google-rating">
+
+                    <div class="google-g">
+                        G
+                    </div>
+
+                    <div>
+
+                        <div class="rating-number">
+                            5.0
+                        </div>
+
+                        <div class="rating-stars">
+                            ★★★★★
+                        </div>
+
+                        <small>
+                            Customer Reviews
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Decorative line -->
+
+            <div
+                class="gold-line"
+                aria-hidden="true"
+            >
+                <span></span>
+            </div>
+
+
+            <!-- Review Slider -->
+
+            <div class="reviews-wrapper">
+
+                <button
+                    type="button"
+                    class="slider-button prev"
+                    aria-label="Previous reviews"
+                >
+                    &#10094;
+                </button>
+
+
+                <div
+                    class="reviews-slider"
+                    id="reviewsSlider"
+                >
+
+
+                    <!-- Review 1 -->
+
+                    <article class="review-card">
+
+                        <div class="customer-photo">
+
+                            <img
+                                src="images/customer1.jpg"
+                                alt="Sindhu"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="review-body">
+
+                            <div class="customer-name">
+
+                                <span>
+                                    Sindhu
+                                </span>
+
+                                <span
+                                    class="verified"
+                                    aria-label="Verified"
+                                >
+                                    ✓
+                                </span>
+
+                            </div>
+
+                            <div
+                                class="stars"
+                                aria-label="5 out of 5 stars"
+                            >
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                The best DJ currently I have seen.
+                                Amazing sound quality and lighting.
+                                The entire event was professionally
+                                managed and everyone enjoyed the music.
+                                Highly recommended.
+                            </p>
+
+                            <div class="review-footer">
+
+                                <span>
+                                    Google Review
+                                </span>
+
+                                <span>
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Review 2 -->
+
+                    <article class="review-card">
+
+                        <div class="customer-photo">
+
+                            <img
+                                src="images/customer2.jpg"
+                                alt="Yuva Sri"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="review-body">
+
+                            <div class="customer-name">
+
+                                <span>
+                                    Yuva Sri
+                                </span>
+
+                                <span class="verified">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                If you are looking for a talented
+                                and professional DJ who knows how
+                                to make an event come alive,
+                                I highly recommend this team.
+                                Fantastic experience.
+                            </p>
+
+                            <div class="review-footer">
+
+                                <span>
+                                    Google Review
+                                </span>
+
+                                <span>
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Review 3 -->
+
+                    <article class="review-card">
+
+                        <div class="customer-photo">
+
+                            <img
+                                src="images/customer3.jpg"
+                                alt="Pavithra"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="review-body">
+
+                            <div class="customer-name">
+
+                                <span>
+                                    Pavithra
+                                </span>
+
+                                <span class="verified">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                It was such a pleasure to have
+                                the DJ team at our event.
+                                Everything was handled with
+                                professionalism and the entertainment
+                                was excellent.
+                            </p>
+
+                            <div class="review-footer">
+
+                                <span>
+                                    Google Review
+                                </span>
+
+                                <span>
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Review 4 -->
+
+                    <article class="review-card">
+
+                        <div class="customer-photo">
+
+                            <img
+                                src="images/customer4.jpg"
+                                alt="Sathiyamoorthi"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="review-body">
+
+                            <div class="customer-name">
+
+                                <span>
+                                    Sathiyamoorthi
+                                </span>
+
+                                <span class="verified">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                Amazing DJ with excellent song
+                                selection. Everyone enjoyed the
+                                event and the atmosphere was
+                                fantastic. Definitely recommended
+                                for celebrations and weddings.
+                            </p>
+
+                            <div class="review-footer">
+
+                                <span>
+                                    Google Review
+                                </span>
+
+                                <span>
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Review 5 -->
+
+                    <article class="review-card">
+
+                        <div class="customer-photo">
+
+                            <img
+                                src="images/customer1.jpg"
+                                alt="Arun"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="review-body">
+
+                            <div class="customer-name">
+
+                                <span>
+                                    Arun
+                                </span>
+
+                                <span class="verified">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                Excellent service from start to finish.
+                                The music, lighting and coordination
+                                were outstanding. Our guests had
+                                a wonderful time.
+                            </p>
+
+                            <div class="review-footer">
+
+                                <span>
+                                    Google Review
+                                </span>
+
+                                <span>
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Review 6 -->
+
+                    <article class="review-card">
+
+                        <div class="customer-photo">
+
+                            <img
+                                src="images/customer2.jpg"
+                                alt="Priya"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="review-body">
+
+                            <div class="customer-name">
+
+                                <span>
+                                    Priya
+                                </span>
+
+                                <span class="verified">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                Great team and wonderful performance.
+                                The setup looked beautiful and the
+                                DJ kept the crowd entertained
+                                throughout the event.
+                            </p>
+
+                            <div class="review-footer">
+
+                                <span>
+                                    Google Review
+                                </span>
+
+                                <span>
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="slider-button next"
+                    aria-label="Next reviews"
+                >
+                    &#10095;
+                </button>
+
+            </div>
+
+
+            <!-- Slider dots -->
+
+            <div
+                class="slider-dots"
+                id="sliderDots"
+            ></div>
+
+
+            <!-- Review CTA -->
+
+            <div class="reviews-cta">
+
+                <p>
+                    Loved our service?
+                </p>
+
+                <!-- Replace # with your real Google review URL -->
+
+                <a
+                    href="#"
+                    class="review-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Leave a Review
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <section
+            id="contact"
+            class="section contact-section"
+        >
+
+            <div class="container contact-grid">
+
+
+                <!-- Contact Information -->
+
+                <div class="contact-info">
+
+                    <p class="section-label">
+                        GET IN TOUCH
+                    </p>
+
+                    <h2>
+                        Let's Create
+                        <span>Something Epic.</span>
+                    </h2>
+
+                    <p class="section-text">
+                        Have an event coming up?
+                        Send me your details and I'll get
+                        back to you with availability and
+                        booking information.
+                    </p>
+
+
+                    <div class="contact-details">
+
+
+                        <!-- Phone -->
+
+                        <div class="contact-item">
+
+                            <div class="contact-icon">
+
+                                <i
+                                    class="fa-solid fa-phone"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    CALL ME
+                                </small>
+
+                                <a href="tel:+919965952998">
+                                    +91 99659 52998
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="contact-item">
+
+                            <div class="contact-icon">
+
+                                <i
+                                    class="fa-solid fa-envelope"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    EMAIL
+                                </small>
+
+                                <a href="mailto:hello@djsri.com">
+                                    hello@djsri.com
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Location -->
+
+                        <div class="contact-item">
+
+                            <div class="contact-icon">
+
+                                <i
+                                    class="fa-solid fa-location-dot"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    BASED IN
+                                </small>
+
+                                <span>
+                                    Chennai, India
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Contact Form -->
+
+                <form
+                    id="contactForm"
+                    class="contact-form"
+                    action="https://formspree.io/f/xoeqkvjj"
+                    method="POST"
+                >
+
+
+                    <!-- Name + Email -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Your Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                                minlength="2"
+                                maxlength="50"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Phone + Event -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+91 XXXXX XXXXX"
+                                autocomplete="tel"
+                                pattern="[+]?[0-9\s-]{10,15}"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="event">
+                                Event Type
+                            </label>
+
+                            <select
+                                id="event"
+                                name="event"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Event
+                                </option>
+
+                                <option value="Wedding">
+                                    Wedding
+                                </option>
+
+                                <option value="Private Party">
+                                    Private Party
+                                </option>
+
+                                <option value="Club Event">
+                                    Club Event
+                                </option>
+
+                                <option value="College Event">
+                                    College Event
+                                </option>
+
+                                <option value="Corporate Event">
+                                    Corporate Event
+                                </option>
+
+                                <option value="Fashion Show">
+                                    Fashion Show
+                                </option>
+
+                                <option value="Sporting Event">
+                                    Sporting Event
+                                </option>
+
+                                <option value="Pubbing">
+                                    Pubbing
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Message -->
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Tell Me About Your Event
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            minlength="10"
+                            maxlength="1000"
+                            placeholder="Event date, location, guests, music style..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- Form Status -->
+
+                    <div
+                        id="formMessage"
+                        class="form-message"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary form-button"
+                        id="submitButton"
+                    >
+
+                        <span id="buttonText">
+                            Send Enquiry
+                        </span>
+
+                        <i
+                            id="buttonIcon"
+                            class="fa-solid fa-paper-plane"
+                            aria-hidden="true"
+                        ></i>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <!-- Brand -->
+
+            <div class="footer-brand">
+
+                <a
+                    href="#home"
+                    class="logo"
+                    aria-label="DJ Sri home"
+                >
+
+                    <span class="logo-icon">
+
+                        <i
+                            class="fa-solid fa-headphones"
+                            aria-hidden="true"
+                        ></i>
+
+                    </span>
+
+                    <span>
+                        DJ<span>SRI</span>
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Professional DJ creating unforgettable
+                    experiences through music, energy and passion.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-instagram"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-facebook-f"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="YouTube"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-youtube"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="SoundCloud"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-soundcloud"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Explore -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Explore
+                </h3>
+
+                <a href="#about">About</a>
+                <a href="#music">Music</a>
+                <a href="#videos">Videos</a>
+                <a href="#gallery">Gallery</a>
+
+            </div>
+
+
+            <!-- Services -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Services
+                </h3>
+
+                <a href="#services">
+                    Wedding DJ
+                </a>
+
+                <a href="#services">
+                    Private Parties
+                </a>
+
+                <a href="#services">
+                    Club Events
+                </a>
+
+                <a href="#services">
+                    Corporate Events
+                </a>
+
+                <a href="#services">
+                    Pubbing
+                </a>
+
+                <a href="#services">
+                    Fashion Show Events
+                </a>
+
+                <a href="#services">
+                    Sporting Events
+                </a>
+
+                <a href="#services">
+                    College Events
+                </a>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <a href="tel:+919965952998">
+                    +91 99659 52998
+                </a>
+
+                <a href="mailto:hello@djsri.com">
+                    hello@djsri.com
+                </a>
+
+                <span>
+                    Chennai, India
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    © 2026 DJ Sri. All Rights Reserved.
+                </p>
+
+                <p>
+                    Designed for the love of music.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+   
+</body>
+
+</html>
