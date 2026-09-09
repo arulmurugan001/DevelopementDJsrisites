@@ -30,7 +30,7 @@
         content="#08090d"
     >
 
-    <title>DJ Sri | Professional DJ & Music Experience</title>
+    <title>DJ Sri | Professional DJ &amp; Music Experience</title>
 
 
     <!-- =========================
@@ -73,178 +73,21 @@
         href="styles.css"
     >
 
+
+    <!-- =========================
+         Third-party embeds
+         (async — safe to load in head)
+    ========================== -->
+
+    <!-- Elfsight Google Reviews -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+
+    <!-- Instagram Embed -->
+    <script async src="https://www.instagram.com/embed.js"></script>
+
 </head>
 
-<script>
 
-const contactForm =
-    document.getElementById("contactForm");
-
-const formMessage =
-    document.getElementById("formMessage");
-
-const submitButton =
-    document.getElementById("submitButton");
-
-const buttonText =
-    document.getElementById("buttonText");
-
-const buttonIcon =
-    document.getElementById("buttonIcon");
-
-
-contactForm.addEventListener(
-    "submit",
-    async function (event) {
-
-        event.preventDefault();
-
-
-        /* =========================================
-           Loading state
-        ========================================== */
-
-        submitButton.disabled = true;
-
-        buttonText.textContent = "Sending...";
-
-        buttonIcon.className =
-            "fa-solid fa-spinner fa-spin";
-
-
-        formMessage.textContent = "";
-
-        formMessage.className =
-            "form-message";
-
-
-        /* =========================================
-           Form data
-        ========================================== */
-
-        const formData =
-            new FormData(contactForm);
-
-
-        try {
-
-            const response =
-                await fetch(
-                    contactForm.action,
-                    {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            "Accept":
-                                "application/json"
-                        }
-                    }
-                );
-
-
-            /* =====================================
-               SUCCESS
-            ====================================== */
-
-            if (response.ok) {
-
-                formMessage.textContent =
-                    "Thank you! Your enquiry has been sent successfully.";
-
-                formMessage.classList.add(
-                    "success"
-                );
-
-
-                /* Reset form */
-
-                contactForm.reset();
-
-
-                /* Button */
-
-                buttonText.textContent =
-                    "Enquiry Sent";
-
-                buttonIcon.className =
-                    "fa-solid fa-check";
-
-
-                /* Return button after 3 seconds */
-
-                setTimeout(function () {
-
-                    submitButton.disabled =
-                        false;
-
-                    buttonText.textContent =
-                        "Send Enquiry";
-
-                    buttonIcon.className =
-                        "fa-solid fa-paper-plane";
-
-                }, 3000);
-
-
-            }
-
-            /* =====================================
-               ERROR
-            ====================================== */
-
-            else {
-
-                formMessage.textContent =
-                    "Unable to send your enquiry. Please try again.";
-
-                formMessage.classList.add(
-                    "error"
-                );
-
-
-                submitButton.disabled =
-                    false;
-
-                buttonText.textContent =
-                    "Send Enquiry";
-
-                buttonIcon.className =
-                    "fa-solid fa-paper-plane";
-
-            }
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Form submission error:",
-                error
-            );
-
-
-            formMessage.textContent =
-                "Something went wrong. Please check your internet connection and try again.";
-
-            formMessage.classList.add(
-                "error"
-            );
-
-
-            submitButton.disabled =
-                false;
-
-            buttonText.textContent =
-                "Send Enquiry";
-
-            buttonIcon.className =
-                "fa-solid fa-paper-plane";
-
-        }
-
-    });
-
-</script>
 <body>
 
 
@@ -280,7 +123,7 @@ contactForm.addEventListener(
 
             <!-- Navigation -->
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
 
                 <li>
                     <a href="#home">Home</a>
@@ -328,8 +171,10 @@ contactForm.addEventListener(
             <button
                 type="button"
                 class="menu-toggle"
+                id="menuToggle"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
+                aria-controls="navLinks"
             >
 
                 <i
@@ -386,7 +231,7 @@ contactForm.addEventListener(
 
 
                     <p class="hero-subtitle">
-                        PROFESSIONAL DJ & MUSIC PRODUCER
+                        PROFESSIONAL DJ &amp; MUSIC PRODUCER
                     </p>
 
 
@@ -480,7 +325,7 @@ contactForm.addEventListener(
                     <div class="hero-image">
 
                         <img
-                            src="images/dj-hero.jpg"
+                            src="images/dj-landing-bg.jpg"
                             alt="DJ Sri performing live"
                         >
 
@@ -579,7 +424,8 @@ contactForm.addEventListener(
                     <div class="about-image">
 
                         <img
-                            src="images/dj-profile.jpg"
+                            id="aboutSliderImage"
+                            src="images/about/dj-profile.jpeg"
                             alt="DJ Sri performing at an event"
                             loading="lazy"
                         >
@@ -777,7 +623,7 @@ contactForm.addEventListener(
 
                                 <audio controls preload="none">
                                     <source
-                                        src="audio/track-1.mp3"
+                                        src="audio/track-1.mpeg"
                                         type="audio/mpeg"
                                     >
 
@@ -839,7 +685,7 @@ contactForm.addEventListener(
 
                                 <audio controls preload="none">
                                     <source
-                                        src="audio/track-2.mp3"
+                                        src="audio/track-2.mpeg"
                                         type="audio/mpeg"
                                     >
                                 </audio>
@@ -898,7 +744,7 @@ contactForm.addEventListener(
 
                                 <audio controls preload="none">
                                     <source
-                                        src="audio/track-3.mp3"
+                                        src="audio/track-3.mpeg"
                                         type="audio/mpeg"
                                     >
                                 </audio>
@@ -957,7 +803,7 @@ contactForm.addEventListener(
 
                                 <audio controls preload="none">
                                     <source
-                                        src="audio/track-4.mp3"
+                                        src="audio/track-4.mpeg"
                                         type="audio/mpeg"
                                     >
                                 </audio>
@@ -965,117 +811,6 @@ contactForm.addEventListener(
                             </article>
 
                         </div>
-
-
-                        <!-- Duplicate Group
-                             Required for seamless marquee -->
-
-                        <div
-                            class="music-group"
-                            aria-hidden="true"
-                        >
-
-                            <article class="track-card">
-                                <div class="track-image">
-                                    <img
-                                        src="images/music-1.jpg"
-                                        alt=""
-                                    >
-
-                                    <span class="track-number">
-                                        01
-                                    </span>
-                                </div>
-
-                                <div class="track-content">
-                                    <div>
-                                        <h3>Midnight Energy</h3>
-                                        <p>Deep House • 2026</p>
-                                    </div>
-
-                                    <span class="track-duration">
-                                        04:32
-                                    </span>
-                                </div>
-                            </article>
-
-
-                            <article class="track-card">
-                                <div class="track-image">
-                                    <img
-                                        src="images/music-2.jpg"
-                                        alt=""
-                                    >
-
-                                    <span class="track-number">
-                                        02
-                                    </span>
-                                </div>
-
-                                <div class="track-content">
-                                    <div>
-                                        <h3>Summer Vibes</h3>
-                                        <p>House • 2026</p>
-                                    </div>
-
-                                    <span class="track-duration">
-                                        03:58
-                                    </span>
-                                </div>
-                            </article>
-
-
-                            <article class="track-card">
-                                <div class="track-image">
-                                    <img
-                                        src="images/music-3.jpg"
-                                        alt=""
-                                    >
-
-                                    <span class="track-number">
-                                        03
-                                    </span>
-                                </div>
-
-                                <div class="track-content">
-                                    <div>
-                                        <h3>Neon Nights</h3>
-                                        <p>EDM • 2026</p>
-                                    </div>
-
-                                    <span class="track-duration">
-                                        05:12
-                                    </span>
-                                </div>
-                            </article>
-
-
-                            <article class="track-card">
-                                <div class="track-image">
-                                    <img
-                                        src="images/music-4.jpg"
-                                        alt=""
-                                    >
-
-                                    <span class="track-number">
-                                        04
-                                    </span>
-                                </div>
-
-                                <div class="track-content">
-                                    <div>
-                                        <h3>Festival Fire</h3>
-                                        <p>EDM • Festival</p>
-                                    </div>
-
-                                    <span class="track-duration">
-                                        04:45
-                                    </span>
-                                </div>
-                            </article>
-
-                        </div>
-
                     </div>
 
                 </div>
@@ -1113,7 +848,6 @@ contactForm.addEventListener(
 
                 </div>
 
-
                 <!-- Video Marquee -->
 
                 <div
@@ -1123,21 +857,30 @@ contactForm.addEventListener(
 
                     <div class="video-track">
 
-
                         <!-- Video Group -->
 
                         <div class="video-group">
 
 
+                            <!-- Video Card 1 -->
+
                             <article class="video-card">
 
                                 <div class="video-thumbnail">
 
-                                    <img
-                                        src="images/video-1.jpg"
-                                        alt="DJ performing at Chennai Night Festival"
-                                        loading="lazy"
+                                    <video
+                                        class="video-player"
+                                        controls
+                                        preload="metadata"
+                                        poster="images/video-1.jpg"
                                     >
+                                        <source
+                                            src="videos/Chennai Night Festival.mp4"
+                                            type="video/mp4"
+                                        >
+
+                                        Your browser does not support this video.
+                                    </video>
 
                                     <button
                                         type="button"
@@ -1156,6 +899,7 @@ contactForm.addEventListener(
 
                                 </div>
 
+
                                 <div class="video-content">
 
                                     <span class="video-category">
@@ -1171,15 +915,26 @@ contactForm.addEventListener(
                             </article>
 
 
+
+                            <!-- Video Card 2 -->
+
                             <article class="video-card">
 
                                 <div class="video-thumbnail">
 
-                                    <img
-                                        src="images/video-2.jpg"
-                                        alt="DJ performing at an electronic music festival"
-                                        loading="lazy"
+                                    <video
+                                        class="video-player"
+                                        controls
+                                        preload="metadata"
+                                        poster="images/video-2.jpg"
                                     >
+                                        <source
+                                            src="videos/Electronic Music Night.mp4"
+                                            type="video/mp4"
+                                        >
+
+                                        Your browser does not support this video.
+                                    </video>
 
                                     <button
                                         type="button"
@@ -1198,6 +953,7 @@ contactForm.addEventListener(
 
                                 </div>
 
+
                                 <div class="video-content">
 
                                     <span class="video-category">
@@ -1213,15 +969,26 @@ contactForm.addEventListener(
                             </article>
 
 
+
+                            <!-- Video Card 3 -->
+
                             <article class="video-card">
 
                                 <div class="video-thumbnail">
 
-                                    <img
-                                        src="images/video-3.jpg"
-                                        alt="DJ performing at a neon music event"
-                                        loading="lazy"
+                                    <video
+                                        class="video-player"
+                                        controls
+                                        preload="metadata"
+                                        poster="images/video-3.jpg"
                                     >
+                                        <source
+                                            src="videos/Neon Nights.mp4"
+                                            type="video/mp4"
+                                        >
+
+                                        Your browser does not support this video.
+                                    </video>
 
                                     <button
                                         type="button"
@@ -1240,6 +1007,7 @@ contactForm.addEventListener(
 
                                 </div>
 
+
                                 <div class="video-content">
 
                                     <span class="video-category">
@@ -1255,15 +1023,26 @@ contactForm.addEventListener(
                             </article>
 
 
+
+                            <!-- Video Card 4 -->
+
                             <article class="video-card">
 
                                 <div class="video-thumbnail">
 
-                                    <img
-                                        src="images/video-4.jpg"
-                                        alt="DJ performing at a festival"
-                                        loading="lazy"
+                                    <video
+                                        class="video-player"
+                                        controls
+                                        preload="metadata"
+                                        poster="images/video-4.jpg"
                                     >
+                                        <source
+                                            src="videos/Festival Fire.mp4"
+                                            type="video/mp4"
+                                        >
+
+                                        Your browser does not support this video.
+                                    </video>
 
                                     <button
                                         type="button"
@@ -1282,138 +1061,6 @@ contactForm.addEventListener(
 
                                 </div>
 
-                                <div class="video-content">
-
-                                    <span class="video-category">
-                                        LIVE EVENT
-                                    </span>
-
-                                    <h3>
-                                        Festival Fire
-                                    </h3>
-
-                                </div>
-
-                            </article>
-
-                        </div>
-
-
-                        <!-- Duplicate Group -->
-
-                        <div
-                            class="video-group"
-                            aria-hidden="true"
-                        >
-
-                            <article class="video-card">
-
-                                <div class="video-thumbnail">
-
-                                    <img
-                                        src="images/video-1.jpg"
-                                        alt=""
-                                        loading="lazy"
-                                    >
-
-                                    <span class="video-duration">
-                                        03:42
-                                    </span>
-
-                                </div>
-
-                                <div class="video-content">
-
-                                    <span class="video-category">
-                                        LIVE PERFORMANCE
-                                    </span>
-
-                                    <h3>
-                                        Chennai Night Festival
-                                    </h3>
-
-                                </div>
-
-                            </article>
-
-
-                            <article class="video-card">
-
-                                <div class="video-thumbnail">
-
-                                    <img
-                                        src="images/video-2.jpg"
-                                        alt=""
-                                        loading="lazy"
-                                    >
-
-                                    <span class="video-duration">
-                                        05:18
-                                    </span>
-
-                                </div>
-
-                                <div class="video-content">
-
-                                    <span class="video-category">
-                                        FESTIVAL
-                                    </span>
-
-                                    <h3>
-                                        Electronic Music Night
-                                    </h3>
-
-                                </div>
-
-                            </article>
-
-
-                            <article class="video-card">
-
-                                <div class="video-thumbnail">
-
-                                    <img
-                                        src="images/video-3.jpg"
-                                        alt=""
-                                        loading="lazy"
-                                    >
-
-                                    <span class="video-duration">
-                                        04:25
-                                    </span>
-
-                                </div>
-
-                                <div class="video-content">
-
-                                    <span class="video-category">
-                                        DJ PERFORMANCE
-                                    </span>
-
-                                    <h3>
-                                        Neon Nights
-                                    </h3>
-
-                                </div>
-
-                            </article>
-
-
-                            <article class="video-card">
-
-                                <div class="video-thumbnail">
-
-                                    <img
-                                        src="images/video-4.jpg"
-                                        alt=""
-                                        loading="lazy"
-                                    >
-
-                                    <span class="video-duration">
-                                        06:10
-                                    </span>
-
-                                </div>
 
                                 <div class="video-content">
 
@@ -1428,6 +1075,7 @@ contactForm.addEventListener(
                                 </div>
 
                             </article>
+
 
                         </div>
 
@@ -1494,7 +1142,7 @@ contactForm.addEventListener(
                     <article class="gallery-item gallery-item-large">
 
                         <img
-                            src="images/dj-1.jpg"
+                            src="images/dj-1.jpeg"
                             alt="DJ performing at a live music event"
                             loading="lazy"
                         >
@@ -1532,7 +1180,7 @@ contactForm.addEventListener(
                     <article class="gallery-item">
 
                         <img
-                            src="images/dj-2.jpg"
+                            src="images/dj-2.jpeg"
                             alt="DJ hands controlling a music mixer"
                             loading="lazy"
                         >
@@ -1570,7 +1218,7 @@ contactForm.addEventListener(
                     <article class="gallery-item">
 
                         <img
-                            src="images/dj-3.jpg"
+                            src="images/dj-3.jpeg"
                             alt="DJ performing for a large audience"
                             loading="lazy"
                         >
@@ -1608,7 +1256,7 @@ contactForm.addEventListener(
                     <article class="gallery-item">
 
                         <img
-                            src="images/dj-4.jpg"
+                            src="images/dj-4.jpeg"
                             alt="DJ performing with stage lights"
                             loading="lazy"
                         >
@@ -1646,7 +1294,7 @@ contactForm.addEventListener(
                     <article class="gallery-item gallery-item-wide">
 
                         <img
-                            src="images/dj-5.jpg"
+                            src="images/dj-5.jpeg"
                             alt="DJ mixing music in front of a crowd"
                             loading="lazy"
                         >
@@ -1739,7 +1387,7 @@ contactForm.addEventListener(
 
                     <!-- 01 -->
 
-                    <article class="service-card">
+                    <article class="service-card wedding-card">
 
                         <div class="service-icon">
                             <i
@@ -1775,7 +1423,7 @@ contactForm.addEventListener(
 
                     <!-- 02 -->
 
-                    <article class="service-card">
+                    <article class="service-card privateparty-card">
 
                         <div class="service-icon">
                             <i
@@ -1810,7 +1458,7 @@ contactForm.addEventListener(
 
                     <!-- 03 -->
 
-                    <article class="service-card">
+                    <article class="service-card ClubEvents-card">
 
                         <div class="service-icon">
                             <i
@@ -1845,7 +1493,7 @@ contactForm.addEventListener(
 
                     <!-- 04 -->
 
-                    <article class="service-card">
+                    <article class="service-card College-card">
 
                         <div class="service-icon">
                             <i
@@ -1857,7 +1505,7 @@ contactForm.addEventListener(
                         <span>04</span>
 
                         <h3>
-                            College Culturals & Farewell
+                            College Culturals &amp; Farewell
                         </h3>
 
                         <p>
@@ -1880,7 +1528,7 @@ contactForm.addEventListener(
 
                     <!-- 05 -->
 
-                    <article class="service-card">
+                    <article class="service-card CorporateEvents-card">
 
                         <div class="service-icon">
                             <i
@@ -1916,7 +1564,7 @@ contactForm.addEventListener(
 
                     <!-- 06 -->
 
-                    <article class="service-card">
+                    <article class="service-card Pubbing-card">
 
                         <div class="service-icon">
                             <i
@@ -1951,7 +1599,7 @@ contactForm.addEventListener(
 
                     <!-- 07 -->
 
-                    <article class="service-card">
+                    <article class="service-card FashionShow-card">
 
                         <div class="service-icon">
                             <i
@@ -1986,7 +1634,7 @@ contactForm.addEventListener(
 
                     <!-- 08 -->
 
-                    <article class="service-card">
+                    <article class="service-card SportingEvents-card">
 
                         <div class="service-icon">
                             <i
@@ -2062,8 +1710,8 @@ contactForm.addEventListener(
                     </p>
 
                     <h2>
-                        Studio-Grade Sound.
-                        Live-Ready Every Time.
+                        Studio-Grade <span>Sound.
+                        Live-Ready Every Time</span>.
                     </h2>
 
                     <p>
@@ -2220,6 +1868,95 @@ contactForm.addEventListener(
         </section>
 
 
+        <!-- =================================================
+             INSTAGRAM REELS
+        ================================================== -->
+
+        <section class="instagram-reels-section">
+
+            <div class="reels-header">
+                <div>
+                    <span class="reels-subtitle">FOLLOW US</span>
+                    <h2>Latest Instagram <span>Reels</span></h2>
+
+                    <p>Discover our latest updates, projects and moments.</p>
+                </div>
+
+                <a href="https://www.instagram.com/dj_sriii/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="instagram-follow-btn">
+                    <span>◎</span> Follow on Instagram
+                </a>
+            </div>
+
+
+            <div class="reels-wrapper">
+
+                <!-- Reel 1 -->
+                <div class="reel-card">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/DRzBkzHjGQ3/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+
+                <!-- Reel 2 -->
+                <div class="reel-card">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/Db9tT_4RYuf/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+
+                <!-- Reel 3 -->
+                <div class="reel-card">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/DcJIUdVP7A0/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+
+                <!-- Reel 4 -->
+                <div class="reel-card">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/DAlqJ-yhgKn/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+
+                <!-- Reel 5 -->
+                <div class="reel-card">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/DV_NjwYku_t/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+
+                <!-- Reel 6 -->
+                <div class="reel-card">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/C5D58qyhe4r/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+            </div>
+
+        </section>
+
+
 
         <!-- =================================================
              REVIEWS
@@ -2227,482 +1964,20 @@ contactForm.addEventListener(
 
         <section class="reviews-section">
 
-            <div
-                class="glow glow-one"
-                aria-hidden="true"
-            ></div>
+            <div class="container reviews-content">
 
-            <div
-                class="glow glow-two"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- Header -->
-
-            <div class="reviews-header">
-
-                <div class="header-text">
-
-                    <span class="small-title">
-                        WHAT OUR CLIENTS SAY
-                    </span>
-
-                    <h2>
-                        OUR GOOGLE
-                        <span>REVIEWS</span>
-                    </h2>
-
-                    <p>
-                        Real experiences from our amazing customers
-                    </p>
-
-                </div>
-
-
-                <div class="google-rating">
-
-                    <div class="google-g">
-                        G
-                    </div>
-
-                    <div>
-
-                        <div class="rating-number">
-                            5.0
-                        </div>
-
-                        <div class="rating-stars">
-                            ★★★★★
-                        </div>
-
-                        <small>
-                            Customer Reviews
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Decorative line -->
-
-            <div
-                class="gold-line"
-                aria-hidden="true"
-            >
-                <span></span>
-            </div>
-
-
-            <!-- Review Slider -->
-
-            <div class="reviews-wrapper">
-
-                <button
-                    type="button"
-                    class="slider-button prev"
-                    aria-label="Previous reviews"
-                >
-                    &#10094;
-                </button>
-
-
-                <div
-                    class="reviews-slider"
-                    id="reviewsSlider"
-                >
-
-
-                    <!-- Review 1 -->
-
-                    <article class="review-card">
-
-                        <div class="customer-photo">
-
-                            <img
-                                src="images/customer1.jpg"
-                                alt="Sindhu"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="review-body">
-
-                            <div class="customer-name">
-
-                                <span>
-                                    Sindhu
-                                </span>
-
-                                <span
-                                    class="verified"
-                                    aria-label="Verified"
-                                >
-                                    ✓
-                                </span>
-
-                            </div>
-
-                            <div
-                                class="stars"
-                                aria-label="5 out of 5 stars"
-                            >
-                                ★★★★★
-                            </div>
-
-                            <p>
-                                The best DJ currently I have seen.
-                                Amazing sound quality and lighting.
-                                The entire event was professionally
-                                managed and everyone enjoyed the music.
-                                Highly recommended.
-                            </p>
-
-                            <div class="review-footer">
-
-                                <span>
-                                    Google Review
-                                </span>
-
-                                <span>
-                                    ✓
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Review 2 -->
-
-                    <article class="review-card">
-
-                        <div class="customer-photo">
-
-                            <img
-                                src="images/customer2.jpg"
-                                alt="Yuva Sri"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="review-body">
-
-                            <div class="customer-name">
-
-                                <span>
-                                    Yuva Sri
-                                </span>
-
-                                <span class="verified">
-                                    ✓
-                                </span>
-
-                            </div>
-
-                            <div class="stars">
-                                ★★★★★
-                            </div>
-
-                            <p>
-                                If you are looking for a talented
-                                and professional DJ who knows how
-                                to make an event come alive,
-                                I highly recommend this team.
-                                Fantastic experience.
-                            </p>
-
-                            <div class="review-footer">
-
-                                <span>
-                                    Google Review
-                                </span>
-
-                                <span>
-                                    ✓
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Review 3 -->
-
-                    <article class="review-card">
-
-                        <div class="customer-photo">
-
-                            <img
-                                src="images/customer3.jpg"
-                                alt="Pavithra"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="review-body">
-
-                            <div class="customer-name">
-
-                                <span>
-                                    Pavithra
-                                </span>
-
-                                <span class="verified">
-                                    ✓
-                                </span>
-
-                            </div>
-
-                            <div class="stars">
-                                ★★★★★
-                            </div>
-
-                            <p>
-                                It was such a pleasure to have
-                                the DJ team at our event.
-                                Everything was handled with
-                                professionalism and the entertainment
-                                was excellent.
-                            </p>
-
-                            <div class="review-footer">
-
-                                <span>
-                                    Google Review
-                                </span>
-
-                                <span>
-                                    ✓
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Review 4 -->
-
-                    <article class="review-card">
-
-                        <div class="customer-photo">
-
-                            <img
-                                src="images/customer4.jpg"
-                                alt="Sathiyamoorthi"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="review-body">
-
-                            <div class="customer-name">
-
-                                <span>
-                                    Sathiyamoorthi
-                                </span>
-
-                                <span class="verified">
-                                    ✓
-                                </span>
-
-                            </div>
-
-                            <div class="stars">
-                                ★★★★★
-                            </div>
-
-                            <p>
-                                Amazing DJ with excellent song
-                                selection. Everyone enjoyed the
-                                event and the atmosphere was
-                                fantastic. Definitely recommended
-                                for celebrations and weddings.
-                            </p>
-
-                            <div class="review-footer">
-
-                                <span>
-                                    Google Review
-                                </span>
-
-                                <span>
-                                    ✓
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Review 5 -->
-
-                    <article class="review-card">
-
-                        <div class="customer-photo">
-
-                            <img
-                                src="images/customer1.jpg"
-                                alt="Arun"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="review-body">
-
-                            <div class="customer-name">
-
-                                <span>
-                                    Arun
-                                </span>
-
-                                <span class="verified">
-                                    ✓
-                                </span>
-
-                            </div>
-
-                            <div class="stars">
-                                ★★★★★
-                            </div>
-
-                            <p>
-                                Excellent service from start to finish.
-                                The music, lighting and coordination
-                                were outstanding. Our guests had
-                                a wonderful time.
-                            </p>
-
-                            <div class="review-footer">
-
-                                <span>
-                                    Google Review
-                                </span>
-
-                                <span>
-                                    ✓
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Review 6 -->
-
-                    <article class="review-card">
-
-                        <div class="customer-photo">
-
-                            <img
-                                src="images/customer2.jpg"
-                                alt="Priya"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="review-body">
-
-                            <div class="customer-name">
-
-                                <span>
-                                    Priya
-                                </span>
-
-                                <span class="verified">
-                                    ✓
-                                </span>
-
-                            </div>
-
-                            <div class="stars">
-                                ★★★★★
-                            </div>
-
-                            <p>
-                                Great team and wonderful performance.
-                                The setup looked beautiful and the
-                                DJ kept the crowd entertained
-                                throughout the event.
-                            </p>
-
-                            <div class="review-footer">
-
-                                <span>
-                                    Google Review
-                                </span>
-
-                                <span>
-                                    ✓
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="slider-button next"
-                    aria-label="Next reviews"
-                >
-                    &#10095;
-                </button>
-
-            </div>
-
-
-            <!-- Slider dots -->
-
-            <div
-                class="slider-dots"
-                id="sliderDots"
-            ></div>
-
-
-            <!-- Review CTA -->
-
-            <div class="reviews-cta">
-
-                <p>
-                    Loved our service?
+                <p class="section-label">
+                    google reviews
                 </p>
 
-                <!-- Replace # with your real Google review URL -->
-
-                <a
-                    href="#"
-                    class="review-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Leave a Review
-                </a>
+                <h2>
+                    What our <span>customers
+                    Say.</span>
+                </h2>
 
             </div>
+
+            <div class="elfsight-app-12136640-6721-4a2e-8764-1feed907178b" data-elfsight-app-lazy></div>
 
         </section>
 
@@ -3005,18 +2280,39 @@ contactForm.addEventListener(
                         class="btn btn-primary form-button"
                         id="submitButton"
                     >
-
-                        <span id="buttonText">
-                            Send Enquiry
-                        </span>
-
                         <i
                             id="buttonIcon"
                             class="fa-solid fa-paper-plane"
                             aria-hidden="true"
                         ></i>
 
+                        <span id="buttonText">
+                            Send Enquiry
+                        </span>
+
                     </button>
+
+
+                    <!-- WhatsApp -->
+                    <!-- NOTE: replace 919965952998 below with the real
+                         WhatsApp-enabled number if it differs from the
+                         "Call Me" number above. -->
+
+                    <a
+                        href="https://wa.me/919965952998?text=Hello%2C%20I%20have%20an%20enquiry."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="whatsapp-button"
+                        id="whatsappButton"
+                    >
+                        <img
+                            src="images/whatsapp.svg"
+                            alt=""
+                            class="whatsapp-icon"
+                        >
+
+                        <span>Enquire on WhatsApp</span>
+                    </a>
 
                 </form>
 
@@ -3072,7 +2368,7 @@ contactForm.addEventListener(
                 <div class="social-links">
 
                     <a
-                        href="#"
+                        href="https://www.instagram.com/dj_sriii/"
                         aria-label="Instagram"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -3115,6 +2411,18 @@ contactForm.addEventListener(
                     >
                         <i
                             class="fa-brands fa-soundcloud"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="https://wa.me/919965952998"
+                        aria-label="WhatsApp"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-whatsapp"
                             aria-hidden="true"
                         ></i>
                     </a>
@@ -3232,9 +2540,239 @@ contactForm.addEventListener(
 
     <!-- =====================================================
          JAVASCRIPT
+         Loaded at the end of body so every element referenced
+         below already exists in the DOM.
     ====================================================== -->
 
-   
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            /* =====================================================
+               MOBILE MENU TOGGLE
+            ====================================================== */
+
+            const menuToggle = document.getElementById("menuToggle");
+            const navLinks = document.getElementById("navLinks");
+
+            if (menuToggle && navLinks) {
+
+                menuToggle.addEventListener("click", function () {
+
+                    const isOpen = navLinks.classList.toggle("active");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        isOpen ? "true" : "false"
+                    );
+
+                    menuToggle.querySelector("i").className =
+                        isOpen
+                            ? "fa-solid fa-xmark"
+                            : "fa-solid fa-bars";
+
+                });
+
+
+                /* Close the menu after tapping a link */
+
+                navLinks.querySelectorAll("a").forEach(function (link) {
+
+                    link.addEventListener("click", function () {
+
+                        navLinks.classList.remove("active");
+
+                        menuToggle.setAttribute("aria-expanded", "false");
+
+                        menuToggle.querySelector("i").className =
+                            "fa-solid fa-bars";
+
+                    });
+
+                });
+
+            }
+
+
+            /* =====================================================
+               CONTACT FORM SUBMISSION
+            ====================================================== */
+
+            const contactForm = document.getElementById("contactForm");
+            const formMessage = document.getElementById("formMessage");
+            const submitButton = document.getElementById("submitButton");
+            const buttonText = document.getElementById("buttonText");
+            const buttonIcon = document.getElementById("buttonIcon");
+
+            if (contactForm) {
+
+                contactForm.addEventListener("submit", async function (event) {
+
+                    event.preventDefault();
+
+
+                    /* Loading state */
+
+                    submitButton.disabled = true;
+
+                    buttonText.textContent = "Sending...";
+
+                    buttonIcon.className = "fa-solid fa-spinner fa-spin";
+
+
+                    formMessage.textContent = "";
+
+                    formMessage.className = "form-message";
+
+
+                    const formData = new FormData(contactForm);
+
+
+                    try {
+
+                        const response = await fetch(
+                            contactForm.action,
+                            {
+                                method: "POST",
+                                body: formData,
+                                headers: {
+                                    "Accept": "application/json"
+                                }
+                            }
+                        );
+
+
+                        if (response.ok) {
+
+                            formMessage.textContent =
+                                "Thank you! Your enquiry has been sent successfully.";
+
+                            formMessage.classList.add("success");
+
+
+                            contactForm.reset();
+
+
+                            buttonText.textContent = "Enquiry Sent";
+
+                            buttonIcon.className = "fa-solid fa-check";
+
+
+                            setTimeout(function () {
+
+                                submitButton.disabled = false;
+
+                                buttonText.textContent = "Send Enquiry";
+
+                                buttonIcon.className = "fa-solid fa-paper-plane";
+
+                            }, 3000);
+
+                        }
+
+                        else {
+
+                            formMessage.textContent =
+                                "Unable to send your enquiry. Please try again.";
+
+                            formMessage.classList.add("error");
+
+
+                            submitButton.disabled = false;
+
+                            buttonText.textContent = "Send Enquiry";
+
+                            buttonIcon.className = "fa-solid fa-paper-plane";
+
+                        }
+
+                    }
+
+                    catch (error) {
+
+                        console.error("Form submission error:", error);
+
+
+                        formMessage.textContent =
+                            "Something went wrong. Please check your internet connection and try again.";
+
+                        formMessage.classList.add("error");
+
+
+                        submitButton.disabled = false;
+
+                        buttonText.textContent = "Send Enquiry";
+
+                        buttonIcon.className = "fa-solid fa-paper-plane";
+
+                    }
+
+                });
+
+            }
+
+
+            /* =====================================================
+               ABOUT SECTION IMAGE SLIDER
+            ====================================================== */
+
+            const aboutImages = [
+                "images/about/dj-profile.jpeg",
+                "images/about/dj-performance.jpeg",
+                "images/about/dj-stage.jpeg",
+                "images/about/dj-crowd.jpeg",
+                "images/about/dj-event.jpeg"
+            ];
+
+            const aboutSliderImage = document.getElementById("aboutSliderImage");
+
+            let currentImage = 0;
+
+            function changeAboutImage() {
+
+                if (!aboutSliderImage) return;
+
+                /* Fade out */
+
+                aboutSliderImage.classList.add("fade-out");
+
+
+                setTimeout(function () {
+
+                    /* Move to next image */
+
+                    currentImage++;
+
+                    if (currentImage >= aboutImages.length) {
+                        currentImage = 0;
+                    }
+
+
+                    /* Change image */
+
+                    aboutSliderImage.src = aboutImages[currentImage];
+
+
+                    /* Fade in */
+
+                    aboutSliderImage.classList.remove("fade-out");
+
+                }, 800);
+
+            }
+
+
+            /* Change image every 4 seconds */
+
+            if (aboutSliderImage) {
+                setInterval(changeAboutImage, 4000);
+            }
+
+        });
+
+    </script>
+
 </body>
 
 </html>
